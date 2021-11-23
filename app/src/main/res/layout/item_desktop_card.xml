@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_desktop_card_item">
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:clickable="true"
+            android:focusable="true"
+
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="false">
+
+            <ImageView
+                android:id="@+id/img_item_desktop_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/text_item_desktop_card_check"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp"
+                android:drawableStart="@drawable/ic_baseline_visibility_24"
+                android:drawablePadding="3dp"
+                android:gravity="start|center"
+                android:text="10000"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text_item_desktop_card_comment"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="5dp"
+                android:drawableStart="@drawable/ic_baseline_notes_24"
+                android:drawablePadding="3dp"
+                android:gravity="start|center"
+                android:text="10000"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/text_item_desktop_card_title"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:maxLines="2"
+        android:text="标题标题标题标题标题标题标题标题标题标题"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="2dp">
+
+        <TextView
+            android:id="@+id/text_item_desktop_card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:text="作者名字"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:background="@drawable/ic_baseline_more_vert_24" />
+
+    </FrameLayout>
+
+</LinearLayout>

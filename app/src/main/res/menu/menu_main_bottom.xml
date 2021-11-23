@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_a"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="1"/>
+
+    <item
+        android:id="@+id/action_b"
+        android:icon="@drawable/ic_baseline_notes_24"
+        android:title="2" />
+
+    <item
+        android:id="@+id/action_c"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="3" />
+
+    <item
+        android:id="@+id/action_d"
+        android:icon="@drawable/ic_baseline_notes_24"
+        android:title="4" />
+
+    <item
+        android:id="@+id/action_e"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="5" />
+
+</menu>
