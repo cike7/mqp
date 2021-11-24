@@ -15,8 +15,8 @@ public class RamLoad extends LoadCacheBase {
         super(bitmapPool);
     }
 
-    @Override
-    protected Bitmap getBitmap() {
-        return null;
+    public void put(String key,Bitmap bitmap){
+
     }
+
 }

@@ -1,6 +1,7 @@
 package com.zhuli.loadImg;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.util.LruCache;
 import android.widget.ImageView;
 
@@ -153,9 +154,11 @@ public class LoadManage implements LifecycleListener {
      */
     private Bitmap inspect(String key){
         if(mRamLoad.load(key) != null && isLoadRam){
+            Log.e("load_image", "缓存中取得位图");
             return mRamLoad.load(key);
         }
         if(mDiskLoad.load(key) != null && isLoadDisk){
+            Log.e("load_image", "磁盘中取得位图");
             return mDiskLoad.load(key);
         }
         return null;

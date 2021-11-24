@@ -23,7 +23,7 @@ public class NetworkLoad extends LoadCacheBase implements LoadBitmapThread.TaskF
     //加载队列线程
     private ArrayMap<String, ImageView> loadThreadPool;
 
-    //真在运行队列
+    //正在运行队列
     private LinkedBlockingQueue<ImageView> runThread;
 
     public NetworkLoad(LruCache<String, Bitmap> bitmapPool) {
@@ -90,16 +90,16 @@ public class NetworkLoad extends LoadCacheBase implements LoadBitmapThread.TaskF
     private void inspectNext(Bitmap bitmap) {
         if (loadThreadPool.size() > 0) {
             String url = loadThreadPool.keySet().iterator().next();
+            Log.e("load_image", "图片url：" + url);
+
             if (loadThreadPool.get(url) != null) {
                 runThread.offer(loadThreadPool.get(url));
                 LoadBitmapThread itemThread = new LoadBitmapThread(url);
                 itemThread.setTask(this);
                 itemThread.start();
-
                 if(bitmap != null){
-                    bitmapPool.put(GetKey.getSafeKey(url),bitmap);
+                    //put(GetKey.getSafeKey(url),bitmap);
                 }
-                
                 loadThreadPool.remove(url);
             }
         }
@@ -120,11 +120,6 @@ public class NetworkLoad extends LoadCacheBase implements LoadBitmapThread.TaskF
                 }
             }
         }
-    }
-
-    @Override
-    protected Bitmap getBitmap() {
-        return null;
     }
 
 }
