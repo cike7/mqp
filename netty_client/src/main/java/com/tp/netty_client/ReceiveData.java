@@ -7,8 +7,21 @@ package com.tp.netty_client;
  * Author: zl
  */
 public interface ReceiveData<T> {
+
     /**
-     * 当收到消息时
+     * 连接成功
+     */
+    void onSuccess(SendDate<T> sendDate);
+
+    /**
+     * 连接失败
+     */
+    void onError(Exception e);
+
+    /**
+     * 收到消息时
+     * @param msg
      */
     void onReceive(T msg);
+
 }

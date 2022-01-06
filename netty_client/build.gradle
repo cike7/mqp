@@ -3,11 +3,21 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 dependencies {
     implementation "io.netty:netty-all:4.1.50.Final"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
-    
+
+//task makeJar(type: Jar) {
+////    delete 'build/mylib.jar'//删除旧的jar
+//    destinationDir = file('build/libs')//指定新jar包存放目录
+//    archivesBaseName = "mylib"//指定新jar包名字
+//    from file('build/classes/java/main')//你写的代码的来源，编译后能找到你代码的路径。因人而异，有可能是 from('build/intermediates/bundles/release/classes.jar')
+//    //第三方库的jar包存放位置
+//    from(project.zipTree("libs/netty-all:4.1.50.Final.jar"))
+//}
+//makeJar.dependsOn(build)

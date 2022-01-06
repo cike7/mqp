@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Message;
@@ -31,6 +33,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.android.material.navigation.NavigationView;
 import com.tp.netty_client.ReceiveData;
+import com.tp.netty_client.SendDate;
 import com.tp.netty_client.model.ReceiveType;
 import com.zhu.annotation.ButterKnifeProcess;
 import com.zhu.mqp.control.handler.ReceiveHandler;
@@ -94,8 +97,13 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         requestLocationPermission();
-//        Intent intent = new Intent(MainActivity.this,ClientService.class);
-//        bindService(intent,conn, Context.BIND_AUTO_CREATE);
+
+        if(isNetworkConnected(this)){
+            Intent intent = new Intent(MainActivity.this,ClientService.class);
+            bindService(intent,conn, Context.BIND_AUTO_CREATE);
+        }else {
+            Toast.makeText(this,"请检查网络连接!",Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -132,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        unbindService(conn);
+        unbindService(conn);
     }
 
 
@@ -143,15 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
             ClientService.ClientReceive receive = (ClientService.ClientReceive) service;
             ClientService clientService = receive.getServer();
-            clientService.setReceiveData(new ReceiveData() {
-                @Override
-                public void onReceive(Object msg) {
-                    Message message = new Message();
-                    message.what = ReceiveType.Type_Notification;
-                    message.obj = msg;
-                    handler.sendMessage(message);
-                }
-            });
+
         }
 
         @Override
@@ -245,6 +245,19 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+
+    public boolean isNetworkConnected(Context context) {
+        if (context != null) {
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+            if (mNetworkInfo != null) {
+                return mNetworkInfo.isAvailable();
+            }
+        }
+        return false;
     }
 
 }

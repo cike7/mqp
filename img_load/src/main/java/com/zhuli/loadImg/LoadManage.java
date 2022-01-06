@@ -135,7 +135,6 @@ public class LoadManage implements LifecycleListener {
      * @param image
      */
     public void setImageView(ImageView image) {
-
         if (nowBitmap != null) {
             image.setImageBitmap(nowBitmap);
             nowBitmap = null;

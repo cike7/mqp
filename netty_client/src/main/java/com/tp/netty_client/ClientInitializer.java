@@ -1,5 +1,7 @@
 package com.tp.netty_client;
 
+import com.tp.netty_client.handler.ClientHandler;
+
 import java.util.concurrent.TimeUnit;
 
 import io.netty.channel.ChannelInitializer;
@@ -18,25 +20,25 @@ import io.netty.util.CharsetUtil;
  * Description:
  * Author: zl
  */
-public class ClientInitializer extends ChannelInitializer<SocketChannel> {
+public class ClientInitializer<T> extends ChannelInitializer<SocketChannel> {
 
-    private ReceiveData receiveData;
+    private ReceiveData<T> receiveData;
 
-    public ClientInitializer(ReceiveData receiveData){
+    public ClientInitializer(ReceiveData<T> receiveData){
         this.receiveData = receiveData;
     }
 
     @Override
-    protected void initChannel(SocketChannel ch) throws Exception {
+    protected void initChannel(SocketChannel ch) {
 
         ChannelPipeline pipeline = ch.pipeline();
 
         pipeline.addLast(
                 new DelimiterBasedFrameDecoder(1024, Delimiters.lineDelimiter()),
-                new IdleStateHandler(60,10,10, TimeUnit.SECONDS),
+                new IdleStateHandler(60,60,60, TimeUnit.SECONDS),
                 new StringDecoder(CharsetUtil.UTF_8),
                 new StringEncoder(CharsetUtil.UTF_8),
-                new ClientHandler(receiveData)
+                new ClientHandler<>(receiveData)
         );
 
     }

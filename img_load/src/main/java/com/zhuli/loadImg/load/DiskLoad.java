@@ -18,4 +18,5 @@ public class DiskLoad extends LoadCacheBase {
     public void put(String key,Bitmap bitmap){
 
     }
+
 }
