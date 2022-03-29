@@ -1,17 +1,19 @@
-package com.zhu.mqp.control.service;
+package com.toprand.netty_server.server;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.os.RemoteException;
+import android.support.v4.os.IResultReceiver;
 
 import com.toprand.netty_server.NettyClient;
 import com.toprand.netty_server.data.ReceiveClient;
+
 
 /**
  * Copyright (C), 2003-2021, 深圳市图派科技有限公司
@@ -36,7 +38,7 @@ public class ClientService extends Service {
 
         handler = new Handler(Looper.getMainLooper()) {
             @Override
-            public void handleMessage(@NonNull Message msg) {
+            public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 if (msg.what == 200) {
                     receiveData.onReceive((String) msg.obj);
@@ -69,8 +71,6 @@ public class ClientService extends Service {
         }).start();
     }
 
-
-    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return new ClientReceive();
@@ -90,5 +90,12 @@ public class ClientService extends Service {
             return ClientService.this;
         }
     }
+
+    private IBinder binder = new IResultReceiver.Stub() {
+        @Override
+        public void send(int i, Bundle bundle) throws RemoteException {
+
+        }
+    };
 
 }

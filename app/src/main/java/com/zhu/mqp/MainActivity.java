@@ -5,15 +5,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,31 +18,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.android.material.navigation.NavigationView;
-import com.tp.netty_client.ReceiveData;
-import com.tp.netty_client.SendDate;
-import com.tp.netty_client.model.ReceiveType;
+import com.toprand.netty_server.model.ReceiveType;
 import com.zhu.annotation.ButterKnifeProcess;
 import com.zhu.mqp.control.handler.ReceiveHandler;
 import com.zhu.mqp.control.service.ClientService;
-import com.zhu.mqp.data.model.ChatMessageModel;
 import com.zhu.mqp.ui.activity.MessageMenuActivity;
-import com.zhu.mqp.ui.adapter.ChatMessageAdapter;
 import com.zhu.processortest.BindView;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 

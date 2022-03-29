@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import com.tp.netty_client.NettyClient;
-import com.tp.netty_client.data.ReceiveClient;
+
+import com.toprand.netty_server.NettyClient;
+import com.toprand.netty_server.SendDate;
+import com.toprand.netty_server.data.ReceiveClient;
 import com.zhu.mqp.control.service.ClientService;
 
 
@@ -114,16 +115,17 @@ public class TestActivity extends AppCompatActivity {
 
             ClientService.ClientReceive receive = (ClientService.ClientReceive) service;
             ClientService clientService = receive.getServer();
-            clientService.setReceiveData(new ReceiveClient<String>() {
-                @Override
-                public void onError(Exception e) {
-
-                }
-
+            clientService.setReceiveData(new ReceiveClient(){
                 @Override
                 public void onReceive(String msg) {
-                    Log.e(">>>>","onReceive" + msg);
+                    super.onReceive(msg);
                 }
+
+                @Override
+                public void onSuccess(SendDate<String> sendDate) {
+                    super.onSuccess(sendDate);
+                }
+
             });
 
         }

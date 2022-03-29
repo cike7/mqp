@@ -1,4 +1,4 @@
-package com.tp.netty_client.model;
+package com.toprand.netty_server.model;
 
 /**
  * Copyright (C) 王字旁的理

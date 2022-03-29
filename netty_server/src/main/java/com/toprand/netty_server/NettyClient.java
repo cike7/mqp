@@ -1,11 +1,6 @@
-package com.tp.netty_client;
+package com.toprand.netty_server;
+import com.toprand.netty_server.data.ReceiveClient;
 
-import com.tp.netty_client.data.ReceiveClient;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -14,7 +9,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-public class NettyClient extends Thread implements ReceiveData {
+public class NettyClient extends Thread implements ReceiveData<String> {
 
     private final static ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -96,7 +91,7 @@ public class NettyClient extends Thread implements ReceiveData {
     }
 
     @Override
-    public void onReceive(Object msg) {
+    public void onReceive(String msg) {
         if (receiveData != null) {
             receiveData.onReceive(msg);
         }

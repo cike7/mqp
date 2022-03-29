@@ -1,4 +1,4 @@
-package com.tp.netty_client;
+package com.toprand.netty_server;
 
 /**
  * Copyright (C), 2003-2021, 深圳市图派科技有限公司

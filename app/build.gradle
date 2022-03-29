@@ -66,9 +66,10 @@ dependencies {
     implementation project(path: ':img_load')
     //okHttp框架
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
-
     //链式加载
     implementation project(path: ':chain_load')
+    //长连接
+    implementation project(path: ':netty_server')
 
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'

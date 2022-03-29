@@ -1,6 +1,6 @@
-package com.tp.netty_client;
+package com.toprand.netty_server;
 
-import com.tp.netty_client.handler.ClientHandler;
+import com.toprand.netty_server.handler.ClientHandler;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +38,7 @@ public class ClientInitializer<T> extends ChannelInitializer<SocketChannel> {
                 new IdleStateHandler(60,60,60, TimeUnit.SECONDS),
                 new StringDecoder(CharsetUtil.UTF_8),
                 new StringEncoder(CharsetUtil.UTF_8),
-                new ClientHandler<>(receiveData)
+                new ClientHandler(receiveData)
         );
 
     }

@@ -11,7 +11,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.tp.netty_client.model.ReceiveType;
+import com.toprand.netty_server.model.ReceiveType;
 import com.zhu.mqp.R;
 
 import java.lang.ref.WeakReference;
